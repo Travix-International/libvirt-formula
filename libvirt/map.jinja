@@ -10,6 +10,8 @@
             'gnutls-bin',
         ],
         'service': 'libvirtd' if grains.get('osmajorrelease', 0)|float >= 8 else 'libvirt-bin',
+        'guests_service': 'libvirt-guests',
+        'guests_service_enable': True,
     },
     'RedHat': {
         'pkgs': [
@@ -19,6 +21,8 @@
             'libvirt-python',
         ],
         'service': 'libvirtd',
+        'guests_service': 'libvirt-guests',
+        'guests_service_enable': True,
     },
     'Arch': {
         'pkgs': [
@@ -28,5 +32,7 @@
             'libvirt-python',
         ],
         'service': 'libvirtd',
+        'guests_service': 'libvirt-guests',
+        'guests_service_enable': True,
     },
 }, merge=salt['pillar.get']('libvirt:lookup')) %}
